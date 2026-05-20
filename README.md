@@ -21,9 +21,9 @@ The goal was to reproduce a realistic corporate environment where each departmen
 
 The infrastructure is built around a segmented network with department-based VLANs, a central firewall (pfSense), redundant core switches, and an isolated DMZ for public-facing services.
 
-```<img width="591" height="288" alt="image" src="https://github.com/user-attachments/assets/04709ace-7bb9-4d52-9b0a-5a8194afd83a" />
 
-```
+```<img width="591" height="288" alt="Sans titre" src="https://github.com/user-attachments/assets/3b2b452f-edc6-43ea-8b64-bd665e459b02" />
+
 
 ---
 
