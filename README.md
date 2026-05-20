@@ -22,7 +22,31 @@ The goal was to reproduce a realistic corporate environment where each departmen
 The infrastructure is built around a segmented network with department-based VLANs, a central firewall (pfSense), redundant core switches, and an isolated DMZ for public-facing services.
 
 
-```<img width="591" height="288" alt="Sans titre" src="https://github.com/user-attachments/assets/3b2b452f-edc6-43ea-8b64-bd665e459b02" />
+```
+                              INTERNET
+                                 │
+                          ┌──────┴──────┐
+                          │   pfSense    │  ◄── Firewall / Routing / NAT
+                          │   Firewall   │
+                          └──────┬───────┘
+                                 │
+                          ┌──────┴──────┐
+                          │   Router     │
+                          └──────┬───────┘
+                  ┌──────────────┼──────────────┐
+            ┌─────┴─────┐                  ┌─────┴─────┐
+            │Switch Core-1│                │Switch Core-2│
+            └─────┬───────┘                └─────┬───────┘
+                  │                              │
+        ┌─────────┴─────────┐          ┌─────────┴──────────┐
+        │   SERVER FARM      │          │   USER VLANS        │
+        │  • DB Server       │          │  • VLAN 10  (IT)    │
+        │  • Mail (Zimbra)   │          │  • VLAN 20  (Mgmt)  │
+        │  • VOIP            │          │  • VLAN 30  (Finance)│
+        │  • Web             │          │  • VLAN 99  (Admin) │
+        │  • DHCP / DNS      │          └─────────────────────┘
+        │  • Storage         │
+        └────────────────────┘
 
 
 ---
